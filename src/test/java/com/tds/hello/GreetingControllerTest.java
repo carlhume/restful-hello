@@ -17,12 +17,22 @@ public class GreetingControllerTest {
 
     @Test
     public void testControllerReturnsGreeting() {
-        assertNotNull( controller.greeting( "World" ) );
+        assertNotNull( controller.greeting( "World", "en" ) );
     }
 
     @Test
     public void testControllerCanGreetCarl() {
-        assertTrue( controller.greeting( "Carl" ).getContent().endsWith( "Carl!" ) );
+        assertTrue( controller.greeting( "Carl", "en" ).getContent().endsWith( "Carl!" ) );
+    }
+
+    @Test
+    public void testControllerCanGreetInEnglish() {
+        assertTrue( controller.greeting( "Carl", "en").getContent().startsWith( "Hello" ) );
+    }
+
+    @Test
+    public void testControllerCanGreetInFrench() {
+        assertTrue( controller.greeting( "Carl", "fr").getContent().startsWith( "Bonjour" ) );
     }
 
 }
